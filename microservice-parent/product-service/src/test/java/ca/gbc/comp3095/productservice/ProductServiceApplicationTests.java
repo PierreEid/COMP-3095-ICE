@@ -157,6 +157,7 @@ class ProductServiceApplicationTests {
                 .body("find { it.id == '%s'}.name".formatted(id), Matchers.equalTo("LG Monitor"))
                 .body("find { it.id == '%s'}.description".formatted(id), Matchers.equalTo("LG 27-inch 4K"))
                 .body("find { it.id == '%s'}.price".formatted(id), Matchers.equalTo(1000));
+
     }
 
     @Test
@@ -173,6 +174,7 @@ class ProductServiceApplicationTests {
                 .statusCode(HttpStatus.OK.value())
                 .body("id", Matchers.hasItem(id));
 
+
         //Delete Test Product
         RestAssured.given()
                 .when()
@@ -187,5 +189,9 @@ class ProductServiceApplicationTests {
                 .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("id", Matchers.not(Matchers.hasItem(id)));
+
+
     }
+
+
 }
